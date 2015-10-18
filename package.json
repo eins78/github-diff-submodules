@@ -1,11 +1,10 @@
 {
-  "name": "github-diff-submodules-bookmarklet",
+  "name": "github-diff-submodules",
   "version": "1.0.0-alpha.1",
   "description": "script to display submodule diffs in github.com diff views",
   "main": "github-diff-submodules.js",
   "scripts": {
-    "build": "rm -rf dist && mkdir dist && cat github-diff-submodules.js | bookmarklet - > dist/bookmarklet.js",
-    "bookmarklet": "bookmarklet"
+    "build": "rm -f index.html && cat github-diff-submodules.js | bookmarklet - | sed -e '1s/.*/{\"bookmarklet_code\": \"&\"}/' | cat - package.json | json --merge | mustache - index.html.mustache > index.html"
   },
   "repository": {
     "type": "git",
@@ -24,6 +23,8 @@
   },
   "homepage": "https://github.com/eins78/github-diff-submodules#readme",
   "devDependencies": {
-    "bookmarklet": "0.0.4"
+    "bookmarklet": "0.0.4",
+    "json": "9.0.3",
+    "mustache": "2.2.0"
   }
 }

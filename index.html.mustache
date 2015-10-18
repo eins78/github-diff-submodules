@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{name}}</title>
+    <link href="https://bootswatch.com/lumen/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body class="container">
+    <h1>{{name}} <small>v{{version}}</small></h1>
+    <h2>bookmarklet</h2>
+    <p class="lead">drag this to your bookmarks bar:</p>
+    <p class="lead">
+      <a href="{{{bookmarklet_code}}}" class="btn btn-info btn-md">gh diff submodules</a>
+    </p>
+    <p class="lead">
+      <small>(or copy the link and install manually)</small>
+    </p>
+    <h2>info</h2>
+    <ul>
+      {{#homepage}}<li>
+        <a href="{{{homepage}}}">
+          github repo</a></li>
+      <li>{{/homepage}}
+        <a href="https://en.wikipedia.org/wiki/Bookmarklet">
+          wikipedia: bookmarklet</a></li>
+    </ul>
+</body>
+</html>

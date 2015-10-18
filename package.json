@@ -8,9 +8,13 @@
     "build": "npm run -s build:web && npm run -s build:userscript",
     "build:web": "npm run -s self | bookmarklet - | sed -e '1s/.*/{\"bookmarklet_code\": \"&\"}/' | cat - package.json | json --merge | mustache - index.html.mustache > index.html",
     "build:userscript": "cat package.json | json --merge | mustache - \"$(npm run -s name).user.js.mustache\" > \"$(npm run -s name).user.js\" && npm run -s self >> \"$(npm run -s name).user.js\"",
+    "pre-commit-build-hook": "npm run -s build && git add index.html github-diff-submodules.user.js",
     "self": "cat \"$(node -p 'require(\"./package\").main')\"",
     "name": "node -p 'require(\"./package.json\").name'"
   },
+  "pre-commit": [
+    "pre-commit-build-hook"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eins78/github-diff-submodules.git"
@@ -27,9 +31,12 @@
     "url": "https://github.com/eins78/github-diff-submodules/issues"
   },
   "homepage": "https://github.com/eins78/github-diff-submodules#readme",
+  "dependencies": {},
+  "engines": {"browser": "*", "greasemonkey": ">0.9"},
   "devDependencies": {
     "bookmarklet": "0.0.4",
     "json": "9.0.3",
-    "mustache": "2.2.0"
+    "mustache": "2.2.0",
+    "pre-commit": "^1.1.1"
   }
 }

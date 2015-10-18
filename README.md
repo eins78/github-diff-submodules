@@ -2,13 +2,8 @@
 
 > script to display submodule diffs in github.com diff views
 
-## features
 
-like it says on the tin
-
-## install
-
-### [here](http://code.178.is/github-diff-submodules/)
+## [see website for installation (bookmarklet/userscript) ](http://code.178.is/github-diff-submodules/)
 
 
 ## todo

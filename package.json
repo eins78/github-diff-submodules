@@ -1,10 +1,15 @@
 {
   "name": "github-diff-submodules",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "script to display submodule diffs in github.com diff views",
   "main": "github-diff-submodules.js",
   "scripts": {
-    "build": "rm -f index.html && cat github-diff-submodules.js | bookmarklet - | sed -e '1s/.*/{\"bookmarklet_code\": \"&\"}/' | cat - package.json | json --merge | mustache - index.html.mustache > index.html"
+    "prebublish": "npm run -s build",
+    "build": "npm run -s build:web && npm run -s build:userscript",
+    "build:web": "npm run -s self | bookmarklet - | sed -e '1s/.*/{\"bookmarklet_code\": \"&\"}/' | cat - package.json | json --merge | mustache - index.html.mustache > index.html",
+    "build:userscript": "cat package.json | json --merge | mustache - \"$(npm run -s name).user.js.mustache\" > \"$(npm run -s name).user.js\" && npm run -s self >> \"$(npm run -s name).user.js\"",
+    "self": "cat \"$(node -p 'require(\"./package\").main')\"",
+    "name": "node -p 'require(\"./package.json\").name'"
   },
   "repository": {
     "type": "git",

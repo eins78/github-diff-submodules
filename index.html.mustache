@@ -8,13 +8,22 @@
 
   <body class="container">
     <h1>{{name}} <small>v{{version}}</small></h1>
-    <h2>bookmarklet</h2>
+    <p class="lead">{{description}}</p>
+    <h2>install</h2>
+    <h3>bookmarklet</h3>
     <p class="lead">drag this to your bookmarks bar:</p>
     <p class="lead">
-      <a href="{{{bookmarklet_code}}}" class="btn btn-info btn-md">gh diff submodules</a>
+      <a href="{{{bookmarklet_code}}}" class="btn btn-info btn-lg">gh diff submodules</a>
     </p>
     <p class="lead">
       <small>(or copy the link and install manually)</small>
+    </p>
+    <h3>userscript (greasemonkey and similar)</h3>
+    <p class="lead">
+      <strong>use this for fireox!</strong>
+    </p>
+    <p class="lead">
+      <a href="{{name}}.user.js" class="btn btn-info btn-md">install userscript</a>
     </p>
     <h2>info</h2>
     <ul>
